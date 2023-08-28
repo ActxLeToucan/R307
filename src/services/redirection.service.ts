@@ -3,6 +3,7 @@ import axios from 'axios';
 import { type IRedirection } from '@/interfaces/redirection.interface';
 import { HttpException } from '@/exceptions/HttpException';
 import { DIRECTUS_TOKEN, DIRECTUS_URL } from '@/config';
+import { logger } from '@/utils/logger';
 
 class RedirectionService {
     public async getRedirection (path: string): Promise<IRedirection | null> {
@@ -11,6 +12,7 @@ class RedirectionService {
             'filter[path][_eq]': path,
             limit: '1'
         });
+
         return redirection[0] ?? null;
     }
 
@@ -25,7 +27,12 @@ class RedirectionService {
             headers: {
                 Authorization: `Bearer ${DIRECTUS_TOKEN}`
             }
-        }).then(response => response.data.data as Type[]);
+        }).then(
+            response => response.data.data as Type[]
+        ).catch(error => {
+            logger.error(error);
+            throw new HttpException(500, 'Error getting Directus items');
+        });
     }
 }
 

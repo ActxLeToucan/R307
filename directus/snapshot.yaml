@@ -2,14 +2,14 @@ version: 1
 directus: 11.1.0
 vendor: postgres
 collections:
-  - collection: Redirections
+  - collection: redirections
     meta:
       accountability: all
       archive_app_filter: true
       archive_field: status
       archive_value: archived
       collapse: open
-      collection: Redirections
+      collection: redirections
       color: null
       display_template: null
       group: null
@@ -24,13 +24,13 @@ collections:
       translations: null
       unarchive_value: draft
     schema:
-      name: Redirections
+      name: redirections
 fields:
-  - collection: Redirections
+  - collection: redirections
     field: date_created
     type: timestamp
     meta:
-      collection: Redirections
+      collection: redirections
       conditions: null
       display: datetime
       display_options:
@@ -52,7 +52,7 @@ fields:
       width: half
     schema:
       name: date_created
-      table: Redirections
+      table: redirections
       data_type: timestamp with time zone
       default_value: null
       max_length: null
@@ -66,11 +66,11 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
-  - collection: Redirections
+  - collection: redirections
     field: date_updated
     type: timestamp
     meta:
-      collection: Redirections
+      collection: redirections
       conditions: null
       display: datetime
       display_options:
@@ -92,7 +92,7 @@ fields:
       width: half
     schema:
       name: date_updated
-      table: Redirections
+      table: redirections
       data_type: timestamp with time zone
       default_value: null
       max_length: null
@@ -106,11 +106,11 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
-  - collection: Redirections
+  - collection: redirections
     field: id
     type: integer
     meta:
-      collection: Redirections
+      collection: redirections
       conditions: null
       display: null
       display_options: null
@@ -130,9 +130,9 @@ fields:
       width: full
     schema:
       name: id
-      table: Redirections
+      table: redirections
       data_type: integer
-      default_value: nextval('"Redirections_id_seq"'::regclass)
+      default_value: nextval('"redirections_id_seq"'::regclass)
       max_length: null
       numeric_precision: 32
       numeric_scale: 0
@@ -144,11 +144,11 @@ fields:
       has_auto_increment: true
       foreign_key_table: null
       foreign_key_column: null
-  - collection: Redirections
+  - collection: redirections
     field: path
     type: string
     meta:
-      collection: Redirections
+      collection: redirections
       conditions: null
       display: null
       display_options: null
@@ -169,7 +169,7 @@ fields:
       width: full
     schema:
       name: path
-      table: Redirections
+      table: redirections
       data_type: character varying
       default_value: null
       max_length: 255
@@ -183,11 +183,11 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
-  - collection: Redirections
+  - collection: redirections
     field: status
     type: string
     meta:
-      collection: Redirections
+      collection: redirections
       conditions: null
       display: labels
       display_options:
@@ -228,7 +228,7 @@ fields:
       width: full
     schema:
       name: status
-      table: Redirections
+      table: redirections
       data_type: character varying
       default_value: draft
       max_length: 255
@@ -242,11 +242,11 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
-  - collection: Redirections
+  - collection: redirections
     field: title
     type: string
     meta:
-      collection: Redirections
+      collection: redirections
       conditions: null
       display: null
       display_options: null
@@ -266,7 +266,7 @@ fields:
       width: full
     schema:
       name: title
-      table: Redirections
+      table: redirections
       data_type: character varying
       default_value: null
       max_length: 255
@@ -280,11 +280,11 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
-  - collection: Redirections
+  - collection: redirections
     field: url
     type: string
     meta:
-      collection: Redirections
+      collection: redirections
       conditions: null
       display: null
       display_options: null
@@ -304,7 +304,7 @@ fields:
       width: full
     schema:
       name: url
-      table: Redirections
+      table: redirections
       data_type: character varying
       default_value: null
       max_length: 255
