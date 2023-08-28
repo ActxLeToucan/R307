@@ -38,6 +38,18 @@ Le modifier si besoin pour obtenir la configuration souhaitée.
 
 Exécuter la commande ```npm run prod``` pour construire et lancer l'image docker de l'application.
 
+#### Application de la snapshot Directus
+##### Méthode 1 : API (recommandée)
+Le token du compte admin est nécessaire pour cette méthode.
+1. Requête : `POST /schema/diff` avec dans le body (en form-data) :
+    - `file` : snapshot.yaml
+2. Copier l'objet `data` de la réponse
+3. Requête : `POST /schema/apply` avec dans le body (en raw) :
+    - `application/json` : le résultat de la requête précédente
+
+##### Méthode 2 : CLI
+Exécuter la commande ```docker compose exec directus npx directus schema apply --yes ./snapshot.yaml``` puis relancer directus.
+
 ## Documentation
 La documentation (OpenAPI) est disponible après le lancement du serveur.\
 Une documentation existe pour chaque version de l'API à l'adresse `{HOST}:{PORT}/{version}/docs`.

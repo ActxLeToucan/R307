@@ -132,7 +132,7 @@ fields:
       name: id
       table: redirections
       data_type: integer
-      default_value: nextval('"redirections_id_seq"'::regclass)
+      default_value: nextval('redirections_id_seq'::regclass)
       max_length: null
       numeric_precision: 32
       numeric_scale: 0
