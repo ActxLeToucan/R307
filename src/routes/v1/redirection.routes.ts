@@ -20,7 +20,33 @@ class RedirectionRoutes implements Routes {
     }
 
     private initializeRoutes () {
-        // TODO: Add swagger documentation
+        /**
+         * @openapi
+         * /r/{path}:
+         *   get:
+         *     tags:
+         *     - Redirection
+         *     summary: Get redirection
+         *     parameters:
+         *     - $ref: '#/components/parameters/path'
+         *     responses:
+         *       307:
+         *         description: Redirect
+         *       404:
+         *         description: Redirection not found
+         *         content:
+         *           application/json:
+         *             schema:
+         *               $ref: '#/components/schemas/Error'
+         *       422:
+         *         $ref: '#/components/responses/errorValidate'
+         *       500:
+         *         description: Internal server error
+         *         content:
+         *           application/json:
+         *             schema:
+         *               $ref: '#/components/schemas/Error'
+         */
         this.router.get(
             `${this.path}/:path`,
             validate(redirectionSchema, 'params'),

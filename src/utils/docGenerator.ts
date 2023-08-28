@@ -5,7 +5,7 @@ function generateDoc (version: string, folder: string, tags: Tag[]) {
         definition: {
             openapi: '3.0.0',
             info: {
-                title: 'FeelteRss',
+                title: 'R307',
                 version
             },
             tags: [
@@ -25,7 +25,8 @@ function generateDoc (version: string, folder: string, tags: Tag[]) {
             `./src/routes/${folder}/*.ts`,
             './src/interfaces/*.ts',
             './src/middlewares/*.ts',
-            './src/utils/*.ts'
+            './src/utils/*.ts',
+            './src/validators/*.ts'
         ]
     };
 
