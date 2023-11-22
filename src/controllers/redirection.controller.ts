@@ -1,7 +1,7 @@
 import { type NextFunction, type Request, type Response } from 'express';
 
-import RedirectionService from '@/services/redirection.service';
 import { HttpException } from '@/exceptions/HttpException';
+import RedirectionService from '@/services/redirection.service';
 
 class RedirectionController {
     private readonly service = new RedirectionService();

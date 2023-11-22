@@ -10,16 +10,17 @@
  *             $ref: '#/components/schemas/Error'
  */
 
-import { type ObjectSchema, ValidationError } from 'joi';
 import { type NextFunction, type Request, type Response } from 'express';
+import { ValidationError } from 'joi';
 
 import { HttpException } from '@/exceptions/HttpException';
+import { type IValidator } from '@/interfaces/validator.interface';
 
-const validate = (validator: ObjectSchema, property: 'body' | 'params' | 'query') => {
+const validate = (validator: IValidator) => {
     return (req: Request, res: Response, next: NextFunction) => {
-        const data = property === 'body' ? req.body : property === 'params' ? req.params : req.query;
-        validator.validateAsync(data, { errors: { wrap: { label: "'" } } }).then((validatedData) => {
-            req[property] = validatedData;
+        const data = validator.location === 'body' ? req.body : validator.location === 'params' ? req.params : req.query;
+        validator.joiSchema.validateAsync(data, { errors: { wrap: { label: '\'' } } }).then((validatedData) => {
+            req[validator.location] = validatedData;
             next();
         }).catch(error => {
             next(error instanceof ValidationError

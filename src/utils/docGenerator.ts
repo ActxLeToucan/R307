@@ -25,7 +25,6 @@ function generateDoc (version: string, folder: string, tags: Tag[]) {
             `./src/routes/${folder}/*.ts`,
             './src/interfaces/*.ts',
             './src/middlewares/*.ts',
-            './src/utils/*.ts',
             './src/validators/*.ts'
         ]
     };

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import { type Routes } from '@/interfaces/routes.interface';
 import RedirectionController from '@/controllers/redirection.controller';
+import { type Routes } from '@/interfaces/routes.interface';
 import validate from '@/middlewares/validator.middleware';
 import { redirectionSchema } from '@/validators/redirection.validator';
 

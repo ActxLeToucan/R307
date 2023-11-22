@@ -1,9 +1,8 @@
 import axios from 'axios';
 
-import { type IRedirection } from '@/interfaces/redirection.interface';
-import { HttpException } from '@/exceptions/HttpException';
 import { DIRECTUS_TOKEN, DIRECTUS_URL } from '@/config';
-import { logger } from '@/utils/logger';
+import { HttpException } from '@/exceptions/HttpException';
+import { type IRedirection } from '@/interfaces/redirection.interface';
 
 class RedirectionService {
     public async getRedirection (path: string): Promise<IRedirection | null> {
@@ -20,19 +19,15 @@ class RedirectionService {
         if (DIRECTUS_URL == null) throw new HttpException(500, 'Directus URL not set');
         if (DIRECTUS_TOKEN == null) throw new HttpException(500, 'Directus token not set');
 
-        return axios({
+        const response = await axios({
             method: 'get',
             url: `${DIRECTUS_URL}/items/${collection}`,
             params,
             headers: {
                 Authorization: `Bearer ${DIRECTUS_TOKEN}`
             }
-        }).then(
-            response => response.data.data as Type[]
-        ).catch(error => {
-            logger.error(error);
-            throw new HttpException(500, 'Error getting Directus items');
         });
+        return response.data.data as Type[];
     }
 }
 

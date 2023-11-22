@@ -1,5 +1,7 @@
 import Joi from 'joi';
 
+import { type IValidator } from '@/interfaces/validator.interface';
+
 /**
  * @openapi
  * components:
@@ -11,6 +13,9 @@ import Joi from 'joi';
  *       schema:
  *         type: string
  */
-export const redirectionSchema = Joi.object({
-    path: Joi.string().required()
-});
+export const redirectionSchema: IValidator = {
+    joiSchema: Joi.object({
+        path: Joi.string().required()
+    }),
+    location: 'params'
+};

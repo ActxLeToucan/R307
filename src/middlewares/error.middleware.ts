@@ -14,8 +14,8 @@
  *               type: string
  */
 
-import { type NextFunction, type Request, type Response } from 'express';
 import { isAxiosError } from 'axios';
+import { type NextFunction, type Request, type Response } from 'express';
 
 import { NODE_ENV } from '@/config';
 import { type HttpException } from '@/exceptions/HttpException';
@@ -23,7 +23,7 @@ import { logger } from '@/utils/logger';
 
 const GENERIC_ERROR_MESSAGE = 'Something went wrong';
 
-const errorMiddleware = (error: HttpException, req: Request, res: Response, next: NextFunction) => {
+const errorMiddleware = (error: HttpException, req: Request, res: Response, next: NextFunction): void => {
     try {
         let status: number = 500;
         let message: string = GENERIC_ERROR_MESSAGE;
@@ -50,7 +50,12 @@ const errorMiddleware = (error: HttpException, req: Request, res: Response, next
         }
 
         logger.error(`[${req.method}] ${req.path} >> StatusCode:: ${status}, Message:: ${message}`);
-        res.status(status).json({ error: { code: status, message: NODE_ENV === 'development' ? message : publicMessage } });
+        if (!res.writableEnded) res.status(status).json({
+            error: {
+                code: status,
+                message: NODE_ENV === 'development' ? message : publicMessage
+            }
+        });
     } catch (error) {
         next(error);
     }
