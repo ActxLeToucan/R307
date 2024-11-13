@@ -281,6 +281,53 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: redirections
+    field: type
+    type: integer
+    meta:
+      collection: redirections
+      conditions: null
+      display: null
+      display_options: null
+      field: type
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: 301 Moved Permanently
+            value: 301
+          - text: 302 Found
+            value: 302
+          - text: 307 Temporary Redirect
+            value: 307
+          - text: 308 Permanent Redirect
+            value: 308
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: type
+      table: redirections
+      data_type: integer
+      default_value: 307
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: redirections
     field: url
     type: string
     meta:
